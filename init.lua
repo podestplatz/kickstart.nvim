@@ -93,6 +93,14 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+-- For vim-slime to know I am working inside tmux and automatically send to the top right pane
+vim.g.slime_target = 'tmux'
+vim.g.slime_default_config = {
+  -- Lua doesn't have a string split function!
+  socket_name = vim.api.nvim_eval 'get(split($TMUX, ","), 0)',
+  target_pane = '{top-right}',
+}
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -567,7 +575,16 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
+        julials = {
+          on_new_config = function(new_config, _)
+            local julia = vim.fn.expand '~/.julia/environments/nvim-lspconfig/bin/julia'
+            if require('lspconfig').util.path.is_file(julia) then
+              vim.notify 'Hello!'
+              new_config.cmd[1] = julia
+            end
+          end,
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -835,7 +852,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'julia' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -863,6 +880,27 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+  { -- Move through buffer easily
+    'smoka7/hop.nvim',
+    version = '*',
+    opts = {
+      keys = 'etovxqpdygfblzhckisuran',
+    },
+    keys = {
+      {
+        '<leader>j',
+        function()
+          require('hop').hint_patterns { direction = nil, current_line_only = false }
+        end,
+        mode = '',
+        desc = '[j]ump to letters',
+      },
+    },
+  },
+  { -- Send text to be executed in interactive session
+    'jpalardy/vim-slime',
+    version = '*',
+  },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -877,7 +915,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
