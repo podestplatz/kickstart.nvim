@@ -1001,6 +1001,25 @@ require('lazy').setup({
     'jpalardy/vim-slime',
     version = '*',
   },
+  { -- Easily restore the state of vim using auto-sessions
+    'rmagatti/auto-session',
+    version = '*',
+    opts = {
+      log_level = 'error',
+      auto_session_suppress_dirs = { '~', '~/Downloads/', '~/Tresorit/', '~/Tresorit/Patricks/bildung/uni/master/' },
+      auto_session_root_dir = vim.fn.stdpath 'data' .. '/.sessions/',
+      auto_session_enable_last_session = true,
+      auto_session_enabled = true,
+      auto_save_enabled = nil,
+      auto_restore_enabled = nil,
+      auto_session_use_git_branch = true,
+      -- the configs below are lua only
+      bypass_session_save_file_types = nil,
+    },
+    config = function(opts)
+      require('auto-session').setup(opts)
+    end,
+  },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
