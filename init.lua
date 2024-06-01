@@ -98,7 +98,7 @@ vim.g.slime_target = 'tmux'
 vim.g.slime_default_config = {
   -- Lua doesn't have a string split function!
   socket_name = vim.api.nvim_eval 'get(split($TMUX, ","), 0)',
-  target_pane = '{top-right}',
+  target_pane = '{top-left}',
 }
 
 -- [[ Setting options ]]
@@ -110,7 +110,7 @@ vim.g.slime_default_config = {
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -911,7 +911,7 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
