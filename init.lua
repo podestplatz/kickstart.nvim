@@ -94,12 +94,13 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = false
 
 -- For vim-slime to know I am working inside tmux and automatically send to the top right pane
-vim.g.slime_target = 'tmux'
-vim.g.slime_default_config = {
-  -- Lua doesn't have a string split function!
-  socket_name = vim.api.nvim_eval 'get(split($TMUX, ","), 0)',
-  target_pane = '{top-left}',
-}
+vim.g.slime_target = 'neovim'
+vim.g.slime_menu_config = 1
+-- vim.g.slime_default_config = { # in case tmux is the target
+--   -- Lua doesn't have a string split function!
+--   socket_name = vim.api.nvim_eval 'get(split($TMUX, ","), 0)',
+--   target_pane = '{top-left}',
+-- }
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
