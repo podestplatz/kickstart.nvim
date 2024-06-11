@@ -364,10 +364,19 @@ require('lazy').setup({
         --
         -- defaults = {
         --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+        --     n = { ['<c-k>'] = require('telescope.actions').delete_buffer },
         --   },
         -- },
         -- pickers = {}
+        pickers = {
+          buffers = {
+            mappings = {
+              i = {
+                ['<c-d>'] = require('telescope.actions').delete_buffer + require('telescope.actions').move_to_top,
+              },
+            },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -796,16 +805,22 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
+    'rmehri01/onenord.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'onenord-light'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
+    end,
+    config = function()
+      require('onenord').setup {
+        theme = 'light',
+        borders = true,
+      }
     end,
   },
 
@@ -902,25 +917,25 @@ require('lazy').setup({
     'jpalardy/vim-slime',
     version = '*',
   },
-  { -- Easily restore the state of vim using auto-sessions
-    'rmagatti/auto-session',
-    version = '*',
-    opts = {
-      log_level = 'error',
-      auto_session_suppress_dirs = { '~', '~/Downloads/', '~/Tresorit/', '~/Tresorit/Patricks/bildung/uni/master/' },
-      auto_session_root_dir = vim.fn.stdpath 'data' .. '/.sessions/',
-      auto_session_enable_last_session = true,
-      auto_session_enabled = true,
-      auto_save_enabled = nil,
-      auto_restore_enabled = nil,
-      auto_session_use_git_branch = true,
-      -- the configs below are lua only
-      bypass_session_save_file_types = nil,
-    },
-    config = function(opts)
-      require('auto-session').setup(opts)
-    end,
-  },
+  -- { -- Easily restore the state of vim using auto-sessions
+  --   'rmagatti/auto-session',
+  --   version = '*',
+  --   opts = {
+  --     log_level = 'error',
+  --     auto_session_suppress_dirs = { '~', '~/Downloads/', '~/Tresorit/', '~/Tresorit/Patricks/bildung/uni/master/' },
+  --     auto_session_root_dir = vim.fn.stdpath 'data' .. '/.sessions/',
+  --     auto_session_enable_last_session = true,
+  --     auto_session_enabled = true,
+  --     auto_save_enabled = nil,
+  --     auto_restore_enabled = nil,
+  --     auto_session_use_git_branch = true,
+  --     -- the configs below are lua only
+  --     bypass_session_save_file_types = nil,
+  --   },
+  --   config = function(opts)
+  --     require('auto-session').setup(opts)
+  --   end,
+  -- },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
