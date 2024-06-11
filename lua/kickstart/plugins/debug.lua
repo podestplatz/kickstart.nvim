@@ -28,7 +28,9 @@ return {
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+    local debugpy_python_path = require('mason-registry').get_package('debugpy'):get_install_path() .. '/venv/bin/python3'
 
+    require('dap-python').setup(debugpy_python_path)
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
