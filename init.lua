@@ -701,26 +701,26 @@ require('lazy').setup({
             end
           end,
         },
-        mojo = {
-          default_config = {
-            cmd = { 'mojo-lsp-server' },
-            filetypes = { 'mojo', '🔥' },
-            root_dir = require('lspconfig.util').find_git_ancestor,
-            single_file_support = true,
-          },
-          docs = {
-            description = [[
-https://github.com/modularml/mojo
-
-`mojo-lsp-server` can be installed [via Modular](https://developer.modular.com/download)
-
-Mojo is a new programming language that bridges the gap between reearch and production by combining Python syntax and ecosystem with systems programming and metaprogramming features.
-            ]],
-            default_config = {
-              root_dir = [[require('lspconfig.util').find_git_ancestor]],
-            },
-          },
-        },
+        --         mojo = {
+        --           default_config = {
+        --             cmd = { 'mojo-lsp-server' },
+        --             filetypes = { 'mojo', '🔥' },
+        --             root_dir = require('lspconfig.util').find_git_ancestor,
+        --             single_file_support = true,
+        --           },
+        --           docs = {
+        --             description = [[
+        -- https://github.com/modularml/mojo
+        --
+        -- `mojo-lsp-server` can be installed [via Modular](https://developer.modular.com/download)
+        --
+        -- Mojo is a new programming language that bridges the gap between reearch and production by combining Python syntax and ecosystem with systems programming and metaprogramming features.
+        --             ]],
+        --             default_config = {
+        --               root_dir = [[require('lspconfig.util').find_git_ancestor]],
+        --             },
+        --           },
+        --         },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
