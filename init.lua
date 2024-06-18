@@ -831,7 +831,7 @@ Mojo is a new programming language that bridges the gap between reearch and prod
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'onenord-light'
+      vim.cmd.colorscheme 'onenord'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
