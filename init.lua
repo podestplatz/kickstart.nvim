@@ -1027,12 +1027,20 @@ Mojo is a new programming language that bridges the gap between reearch and prod
     },
     keys = {
       {
-        '<leader>j',
+        '<leader>jj',
         function()
           require('hop').hint_patterns { direction = nil, current_line_only = false }
         end,
         mode = '',
-        desc = '[j]ump to letters',
+        desc = '[j]ump to pattern',
+      },
+      {
+        '<leader>jw',
+        function()
+          require('hop').hint_words { direction = nil, current_line_only = false }
+        end,
+        mode = '',
+        desc = 'jump to [w]ord',
       },
     },
   },
