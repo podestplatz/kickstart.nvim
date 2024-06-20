@@ -90,8 +90,11 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- A ruler at the 120 character column
+vim.opt.colorcolumn = '120'
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- For vim-slime to know I am working inside tmux and automatically send to the top right pane
 vim.g.slime_target = 'neovim'
