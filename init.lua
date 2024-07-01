@@ -1045,6 +1045,14 @@ require('lazy').setup({
         mode = '',
         desc = 'jump to [w]ord',
       },
+      {
+        '<leader>jl',
+        function()
+          require('hop').hint_lines {}
+        end,
+        mode = '',
+        desc = 'jump to [l]ine',
+      },
     },
   },
   { -- Send text to be executed in interactive session
@@ -1081,11 +1089,11 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
