@@ -270,6 +270,31 @@ require('lazy').setup({
   --
   -- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
   --
+  --  This is equivalent to:
+  --    require('Comment').setup({})
+
+  -- "gc" to comment visual regions/lines
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup {
+        opleader = {
+          line = 'cc',
+          block = 'cb',
+        },
+        toggler = {
+          line = 'ccc',
+          block = 'cbc',
+        },
+      }
+    end,
+    opts = {
+      opleader = {
+        block = 'cb',
+        line = 'cc',
+      },
+    },
+  },
 
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
