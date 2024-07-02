@@ -104,9 +104,9 @@ return {
     -- Basic debugging keymaps, feel free to change to your liking!
     vim.keymap.set('n', '<F5>', function()
       -- (Re-)reads launch.json if present
-      if vim.fn.filereadable '.vscode/launch.json' then
-        require('dap.ext.vscode').load_launchjs(nil, { cpptools = { 'c', 'cpp' } })
-      end
+      -- if vim.fn.filereadable '.vscode/launch.json' then
+      --   require('dap.ext.vscode').load_launchjs(nil, { cpptools = { 'c', 'cpp' } })
+      -- end
       dap.continue()
     end, { desc = 'Debug: Start/Continue' })
     vim.keymap.set('n', '<F8>', dap.step_into, { desc = 'Debug: Step Into' })
