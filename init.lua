@@ -250,7 +250,27 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup {
+        opleader = {
+          line = 'cc',
+          block = 'cb',
+        },
+        toggler = {
+          line = 'ccc',
+          block = 'cbc',
+        },
+      }
+    end,
+    opts = {
+      opleader = {
+        block = 'cb',
+        line = 'cc',
+      },
+    },
+  },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
