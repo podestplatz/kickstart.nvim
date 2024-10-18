@@ -96,22 +96,13 @@ vim.opt.colorcolumn = '120'
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
--- For vim-slime to know I am working inside tmux and automatically send to the top right pane
-vim.g.slime_target = 'neovim'
-vim.g.slime_menu_config = 1
--- vim.g.slime_default_config = { # in case tmux is the target
---   -- Lua doesn't have a string split function!
---   socket_name = vim.api.nvim_eval 'get(split($TMUX, ","), 0)',
---   target_pane = '{top-left}',
--- }
-
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
 -- Make line numbers default
-vim.opt.number = true
+vim.opt.number = false
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.opt.relativenumber = true
@@ -962,7 +953,7 @@ require('lazy').setup({
       {
         '<leader>jw',
         function()
-          require('hop').hint_words { direction = nil, current_line_only = false }
+          require('hop').hint_words { direction = nil, current_line_only = true }
         end,
         mode = '',
         desc = 'jump to [w]ord',
@@ -976,10 +967,6 @@ require('lazy').setup({
         desc = 'jump to [l]ine',
       },
     },
-  },
-  { -- Send text to be executed in interactive session
-    'jpalardy/vim-slime',
-    version = '*',
   },
   -- { -- Easily restore the state of vim using auto-sessions
   --   'rmagatti/auto-session',
