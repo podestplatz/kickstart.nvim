@@ -12,6 +12,7 @@ return {
     vim.g.vimtex_quickfix_open_on_warning = 0
     vim.g.vimtex_quickfix_open_on_error = 1
     vim.g.vimtex_view_method = vimtex_view_method
+
     vim.g.vimtex_compiler_latexmk = {
       callback = 1,
       continuous = 1,
