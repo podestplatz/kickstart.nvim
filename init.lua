@@ -103,8 +103,8 @@ vim.opt.showmode = false
 
 -- Settings for the default textwidth enabling gqip
 vim.opt.textwidth = 120
-vim.opt.formatoptions:append('t')
-vim.opt.formatprg = "par -w120"
+vim.opt.formatoptions:append 't'
+vim.opt.formatprg = 'par -w120'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -341,7 +341,7 @@ require('lazy').setup({
       {
         '<leader>jw',
         function()
-          require('hop').hint_words { direction = nil, current_line_only = false }
+          require('hop').hint_words { direction = nil, current_line_only = true }
         end,
         mode = '',
         desc = 'jump to [w]ord',
