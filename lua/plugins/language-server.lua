@@ -1,21 +1,21 @@
 return {
-	{
-		"williamboman/mason.nvim",
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		opts = {
-			automatic_installation = true,
-		},
-	},
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ 'williamboman/mason.nvim', opts = {} },
-			'williamboman/mason-lspconfig.nvim',
-		      'WhoIsSethDaniel/mason-tool-installer.nvim',
-		},
-		config = function()
+  {
+    'williamboman/mason.nvim',
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    opts = {
+      automatic_installation = true,
+    },
+  },
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      { 'williamboman/mason.nvim', opts = {} },
+      'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+    },
+    config = function()
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -231,5 +231,5 @@ return {
         },
       }
     end,
-	}
+  },
 }

@@ -17,3 +17,16 @@ vim.opt.scrolloff = 5
 
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
+
+-- keep the sign column
+vim.opt.signcolumn = 'yes'
+
+-- set termuicolors for good colors
+if vim.fn.has 'termuicolors' == 1 then
+  vim.opt.termuicolors = true
+  print 'Using termuicolors'
+end
+vim.cmd.colorscheme 'tokyonight-storm'
+
+-- add a ruler at 120 characters
+vim.opt.colorcolumn = '120'
