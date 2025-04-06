@@ -47,10 +47,10 @@ return {
     map('<leader>e', function()
       harpoon:list():select(3)
     end, 'Select first file in list', 'n')
-    map('<leader>a', function()
+    map('<leader>h', function()
       harpoon:list():add()
     end, 'Add file to list', 'n')
-    map('<leader>c', function()
+    map('<leader>hc', function()
       harpoon:list():clear()
     end, '[C]lear all files from list', 'n')
   end,
