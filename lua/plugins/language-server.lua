@@ -180,7 +180,7 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-
+        julials = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -217,7 +217,7 @@ return {
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        ensure_installed = { 'julials', 'pyright' }, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
         handlers = {
           function(server_name)
@@ -229,6 +229,17 @@ return {
             require('lspconfig')[server_name].setup(server)
           end,
         },
+      }
+
+      local julia_ls_script = vim.fs.joinpath(vim.fn.stdpath 'config', 'helpers', 'julia_languageserver.jl')
+      require('lspconfig').julials.setup {
+        cmd = { 'julia', '--startup-file=no', '--history-file=no', julia_ls_script },
+        single_file_support = true,
+        on_attach = function(_, bufnr)
+          -- Disable automatic formatexpr since the LS.jl formatter isn't so nice.
+          vim.bo[bufnr].formatexpr = ''
+        end,
+        capabilities = capabilities,
       }
     end,
   },
