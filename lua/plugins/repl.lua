@@ -1,5 +1,6 @@
 return {
   'pappasam/nvim-repl',
+  lazy = false,
   opts = {
     filetype_commands = {
       julia = { cmd = 'julia --project=.', filetype = 'julia' },
