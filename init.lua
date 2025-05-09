@@ -54,6 +54,10 @@ vim.opt.colorcolumn = '120'
 -- Use global status line (nvim 0.7+) for cleaner UI
 vim.opt.laststatus = 3
 
+-- Custom configurations
+-- Load personal settings and customizations from avante module
+require 'avante'
+
 -- keybindings for easy tab management
 vim.keymap.set('n', 'tt', '<cmd>tabnew<cr>', { desc = '[C]reate new tab' })
 vim.keymap.set('n', 'tx', '<cmd>tabclose<cr>', { desc = 'Close tab' })
