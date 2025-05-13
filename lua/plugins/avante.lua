@@ -77,5 +77,6 @@ return {
     auto_suggestions = false,
     support_pase_from_clipboard = true,
     enable_claude_text_editor_tool_mode = false,
+    enable_token_counting = false,
   },
 }
