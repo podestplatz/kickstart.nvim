@@ -226,13 +226,16 @@ return {
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            -- require('lspconfig')[server_name].setup(server)
+            vim.lsp.config[server_name] = server
+            vim.lsp.enable 'server_name'
           end,
         },
       }
 
       local julia_ls_script = vim.fs.joinpath(vim.fn.stdpath 'config', 'helpers', 'julia_languageserver.jl')
-      require('lspconfig').julials.setup {
+      -- require('lspconfig').julials.setup {
+      vim.lsp.config['julials'] = {
         cmd = { 'julia', '--startup-file=no', '--history-file=no', julia_ls_script },
         single_file_support = true,
         on_attach = function(_, bufnr)
@@ -241,6 +244,7 @@ return {
         end,
         capabilities = capabilities,
       }
+      vim.lsp.enable 'julials'
     end,
   },
 }
