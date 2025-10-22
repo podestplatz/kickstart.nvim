@@ -19,6 +19,9 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
+-- python3 provider
+vim.g.python3_host_prog = '/home/patrick/miniforge3/bin/python3.12'
+
 -- Editor visual feedback settings
 -- Highlight the current cursor line for better visibility
 vim.opt.cursorline = true
@@ -43,12 +46,15 @@ if vim.fn.has 'termuicolors' == 1 then
   vim.opt.termuicolors = true
   print 'Using termuicolors'
 end
--- Set the color scheme to Tokyo Night Storm theme
-vim.cmd.colorscheme 'tokyonight-storm'
+-- Set the color scheme to Everforest Hard Dark theme
+vim.g.background = 'dark'
+vim.g.everforest_background = 'hard'
+vim.cmd.colorscheme 'everforest'
 
 -- Code style guidelines
 -- Display vertical line at column 120 for code length guidance
 vim.opt.colorcolumn = '120'
+vim.opt.textwidth = 120
 
 -- Status line configuration
 -- Use global status line (nvim 0.7+) for cleaner UI
