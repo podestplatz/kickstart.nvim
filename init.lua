@@ -379,20 +379,26 @@ require('lazy').setup({
       },
 
       -- Document existing key chains
-      require('which-key').add {
-        { '<leader>c', group = '[C]ode' },
-        { '<leader>d', group = '[D]ocument'},
-        { '<leader>r', group = '[R]ename'},
-        { '<leader>s', group = '[S]earch'},
-        { '<leader>w', group = '[W]orkspace'},
-        { '<leader>t', group = '[T]oggle'},
-        { '<leader>h', group = 'Git [H]unk'},
-      }
-      -- visual mode
-      require('which-key').add({
-        {'<leader>h', group = 'Git [H]unk' },
-      }, { mode = 'v' })
-    end,
+      spec = {
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>t', group = '[T]oggle' },
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+      },
+      -- -- Document existing key chains
+      -- require('which-key').add {
+      --   { '<leader>c', group = '[C]ode' },
+      --   { '<leader>d', group = '[D]ocument'},
+      --   { '<leader>r', group = '[R]ename'},
+      --   { '<leader>s', group = '[S]earch'},
+      --   { '<leader>w', group = '[W]orkspace'},
+      --   { '<leader>t', group = '[T]oggle'},
+      --   { '<leader>h', group = 'Git [H]unk'},
+      -- },
+      -- -- visual mode
+      -- require('which-key').add {
+      --   {'<leader>h', group = 'Git [H]unk' },
+      -- },
+    },
   },
 
   -- NOTE: Plugins can specify dependencies.
@@ -983,7 +989,7 @@ require('lazy').setup({
     end,
     config = function()
       require('onenord').setup {
-        theme = 'light',
+        theme = 'dark',
         borders = true,
       }
     end,
@@ -1127,7 +1133,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
