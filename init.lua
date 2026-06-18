@@ -230,6 +230,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- LaTeX-specific settings
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Set line width and tab settings for LaTeX files',
+  group = vim.api.nvim_create_augroup('latex-settings', { clear = true }),
+  pattern = 'tex',
+  callback = function()
+    vim.opt_local.textwidth = 80
+    vim.opt_local.colorcolumn = '80'
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.expandtab = true
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -971,6 +985,7 @@ require('lazy').setup({
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'rmehri01/onenord.nvim',
+    enabled = false,
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields

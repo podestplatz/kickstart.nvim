@@ -3,8 +3,9 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
   },
+  enabled = false,
   opts = {
-    foreground = 'NormalNC',
+    foreground = 'Normal',
   },
 
   -- The build is already done by default in lazy.nvim, so you don't need
