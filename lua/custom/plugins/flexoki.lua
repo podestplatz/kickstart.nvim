@@ -1,6 +1,3 @@
-return {
-  {
-    'kepano/flexoki-neovim',
-    name = 'flexoki',
-  },
+vim.pack.add {
+  { src = 'https://github.com/kepano/flexoki-neovim', name = 'flexoki' },
 }

@@ -1,0 +1,31 @@
+-- vim.pack.add {
+--   'https://github.com/nvim-neotest/nvim-nio',
+--   'https://github.com/nvim-lua/plenary.nvim',
+--   'https://github.com/nvim-neotest/neotest-python',
+--   'https://github.com/mrcjkb/rustaceanvim',
+--   'https://github.com/nvim-neotest/neotest',
+-- }
+--
+-- require('neotest').setup {
+--   adapters = {
+--     require('neotest-python') {
+--       args = { '-v' }, -- get more diff
+--     },
+--     require 'rustaceanvim.neotest',
+--   },
+--   output = {
+--     -- Disable pop-up with failing test info (prefer virtual text).
+--     open_on_run = false,
+--   },
+--   quickfix = {
+--     enabled = false,
+--   },
+-- }
+--
+-- vim.keymap.set('n', '<A-n>', '<cmd>Neotest summary toggle<cr>', { desc = 'Toggle Neotest' })
+-- vim.keymap.set('n', '<leader>tn', '<cmd>Neotest run<cr>', { desc = 'Test Nearest' })
+-- vim.keymap.set('n', '<leader>ts', '<cmd>Neotest stop<cr>', { desc = 'Test Stop' })
+-- vim.keymap.set('n', '<leader>tf', '<cmd>Neotest run file<cr>', { desc = 'Test File' })
+-- vim.keymap.set('n', '<leader>td', function()
+--   require('neotest').run.run { strategy = 'dap' }
+-- end, { desc = 'Test Debug' })

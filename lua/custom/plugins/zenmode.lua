@@ -1,11 +1,9 @@
-return {
-  'folke/zen-mode.nvim',
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    window = {
-      width = 126,
-    },
+vim.pack.add {
+  'https://github.com/folke/zen-mode.nvim',
+}
+
+require('zen-mode').setup {
+  window = {
+    width = 126,
   },
 }

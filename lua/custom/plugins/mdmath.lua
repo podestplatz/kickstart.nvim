@@ -1,15 +1,16 @@
-return {
-  'Thiago4532/mdmath.nvim',
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter',
-  },
-  enabled = false,
-  opts = {
-    foreground = 'Normal',
-  },
+local enabled = false
+if not enabled then
+  return
+end
 
-  -- The build is already done by default in lazy.nvim, so you don't need
-  -- the next line, but you can use the command `:MdMath build` to rebuild
-  -- if the build fails for some reason.
-  -- build = ':MdMath build'
+-- nvim-treesitter is installed in init.lua.
+vim.pack.add {
+  'https://github.com/Thiago4532/mdmath.nvim',
 }
+
+require('mdmath').setup {
+  foreground = 'Normal',
+}
+
+-- If the native build step fails after enabling this plugin, run:
+--   :MdMath build
