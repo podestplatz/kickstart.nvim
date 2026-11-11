@@ -132,6 +132,8 @@ vim.o.textwidth = 120
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
   vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+  -- In tmux/SSH/herdr sessions, route yanks through OSC 52 so they reach the local machine.
+  require('config.remote_clipboard').setup()
 
   -- Enable break indent
   vim.o.breakindent = true
