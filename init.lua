@@ -998,6 +998,11 @@ do
   -- require 'kickstart.plugins.debug'
   require 'kickstart.plugins.indent_line'
   require 'kickstart.plugins.lint'
+
+  -- `markdownlint` is noisy on prose (line length, heading style, ...) and its signs and
+  -- virtual text distract while writing, so no linter runs on Markdown. Highlighting is
+  -- untouched, so `render-markdown` and `mdmath` keep working when enabled.
+  require('lint').linters_by_ft.markdown = nil
   -- require 'kickstart.plugins.autopairs'
   require 'kickstart.plugins.neo-tree'
   -- require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
