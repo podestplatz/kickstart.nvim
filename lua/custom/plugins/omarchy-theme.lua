@@ -23,9 +23,16 @@ vim.pack.add {
   'https://github.com/bjarneo/white.nvim',
 }
 
-local home = vim.fn.expand '~'
-local theme_neovim_lua = home .. '/.config/omarchy/current/theme/neovim.lua'
-local theme_name_file = home .. '/.config/omarchy/current/theme.name'
+-- Omarchy keeps the active theme in XDG state (it lived under ~/.config before
+-- Omarchy 4). theme.name is rewritten in place on every theme change, so it is
+-- the stable thing to watch; the theme/ directory itself gets swapped out.
+local state_home = vim.env.XDG_STATE_HOME
+if not state_home or state_home == '' then
+  state_home = vim.fn.expand '~' .. '/.local/state'
+end
+local theme_current = state_home .. '/omarchy/current'
+local theme_neovim_lua = theme_current .. '/theme/neovim.lua'
+local theme_name_file = theme_current .. '/theme.name'
 local theme_watcher
 
 local function get_colorscheme()
